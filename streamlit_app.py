@@ -77,7 +77,7 @@ def get_bot_response(pregunta_usuario):
     similitudes = cosine_similarity(vector_usuario, X)
     idx = similitudes.argmax()
     
-    if similitudes[0, idx] > 0.2:
+    if similitudes[0, idx] > 0.05:
         pregunta_original = preguntas[idx]
         return respuestas_data[pregunta_original]
     else:
@@ -121,3 +121,4 @@ if prompt := st.chat_input("Escribe tu pregunta aquí..."):
         full_response = {"role": "assistant", "content": response_data["respuesta"], "fuente": response_data["fuente"]}
 
         st.session_state.messages.append(full_response)
+
